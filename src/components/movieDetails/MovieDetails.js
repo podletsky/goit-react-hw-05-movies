@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { fetchMovieDetails, fetchMovieCredits } from '../Api.js';
-import { useParams, Link, Outlet } from 'react-router-dom';
+import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
 import Cast from '../cast/Cast.js';
+import PropTypes from 'prop-types';
 const MovieDetails = () => {
   const [movie, setMovie] = useState(null);
   const [cast, setCast] = useState(null);
   const { id } = useParams();
-
+  const location = useLocation();
   useEffect(() => {
     const fetchMovie = async () => {
       try {
@@ -48,11 +49,16 @@ const MovieDetails = () => {
         <p key={genre.id}>{genre.name}</p>
       ))}
       <p>{movie.overview}</p>
-      <Link to={`/Cast/${id}`}>Cast</Link>
+      <Link to={`/movieDetails/${id}/cast`} cast={cast}>
+        Cast
+      </Link>
+
       <Outlet />
-      <Cast cast={cast} />
+      {id === location.state?.id && <Outlet />}
     </div>
   );
 };
-
+Cast.propTypes = {
+  cast: PropTypes.object,
+};
 export default MovieDetails;

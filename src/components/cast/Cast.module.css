@@ -1,0 +1,7 @@
+.author {
+  width: 100px;
+}
+.cast_wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
