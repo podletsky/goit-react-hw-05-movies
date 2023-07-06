@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { fetchMovies } from '../Api.js';
 import { Link } from 'react-router-dom';
-
+import styles from '../movies/Movies.module.css';
 const Movies = () => {
   const [inputValue, setInputValue] = useState('');
   const [movies, setMovies] = useState([]);
@@ -31,8 +31,9 @@ const Movies = () => {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form className={styles.form} onSubmit={handleSubmit}>
         <input
+          className={styles.input}
           type="text"
           autoComplete="off"
           autoFocus

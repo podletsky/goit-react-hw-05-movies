@@ -1,0 +1,28 @@
+.titleFilm {
+  font-size: 40px;
+  font-weight: 700;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: black;
+  text-align: center;
+}
+.boxText {
+  border-bottom: 2px slategrey;
+  background-color: aquamarine;
+  display: flex;
+  justify-content: space-evenly;
+  background-color: orangered;
+}
+.textOverviev {
+  padding: 20px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: gray;
+}
+.img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  align-items: revert;
+  margin: auto;
+  padding: 20px;
+}

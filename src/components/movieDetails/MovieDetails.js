@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { fetchMovieDetails } from '../Api.js';
 import { useParams, Link, Outlet } from 'react-router-dom';
+import styles from '../movieDetails/MovieDetails.module.css';
 
 const MovieDetails = () => {
   const [movie, setMovie] = useState(null);
@@ -27,15 +28,20 @@ const MovieDetails = () => {
 
   return (
     <div>
-      <h2>{movie.title}</h2>
+      <h2 className={styles.titleFilm}>{movie.title}</h2>
       <img
+        className={styles.img}
         src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
         alt={movie.overview}
       />
-      {movie.genres.map(genre => (
-        <p key={genre.id}>{genre.name}</p>
-      ))}
-      <p>{movie.overview}</p>
+      <div className={styles.boxText}>
+        {movie.genres.map(genre => (
+          <p className={styles.text} key={genre.id}>
+            {genre.name}
+          </p>
+        ))}
+      </div>
+      <p className={styles.textOverviev}>{movie.overview}</p>
       <Link to={`/movieDetails/${id}/cast`}>Cast</Link>
       <Link to={`/movieDetails/${id}/reviews`}>Reviews</Link>
 

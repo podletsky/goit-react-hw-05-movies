@@ -13,17 +13,10 @@ const App = () => {
       <Header />
       <Routes>
         <Route path="/component/Home" element={<Home />} />
-        <Route path="/movies" element={<Movies className={styles.title} />} />
-        <Route
-          path="/movieDetails/:id"
-          element={<MovieDetails className={styles.title} />}
-        >
-          <Route path="cast" element={<Cast className={styles.title} />} />
-          <Route
-            path="reviews"
-            element={<Reviews className={styles.title} />}
-          />
-          data-testid="home"
+        <Route path="/movies" element={<Movies />} />
+        <Route path="/movieDetails/:id" element={<MovieDetails />}>
+          <Route path="cast" element={<Cast />} />
+          <Route path="reviews" element={<Reviews />} />
         </Route>
       </Routes>
     </div>

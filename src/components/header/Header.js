@@ -1,18 +1,16 @@
 import { NavLink } from 'react-router-dom';
-
+import styles from './Header.module.css';
 import React from 'react';
 const Header = () => {
   return (
-    <header
-      style={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-      }}
-    >
-      <nav>
-        <NavLink to="/component/Home">Home</NavLink>
-        <NavLink to="/Movies">Movies</NavLink>
+    <header className={styles.header}>
+      <nav className={styles.navlinkBox}>
+        <NavLink className={styles.navlink} to="/component/Home">
+          Home
+        </NavLink>
+        <NavLink className={styles.navlink} to="/Movies">
+          Movies
+        </NavLink>
       </nav>
     </header>
   );
