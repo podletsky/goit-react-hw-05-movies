@@ -5,9 +5,10 @@ const API_KEY = 'ec45ef77891571da539171d6a0a07d2c';
 export const fetchTrend = async () => {
   try {
     const response = await axios.get(
-      `https://api.themoviedb.org/3/trending/all?api_key=${API_KEY}`
+      ` https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}`
     );
-    return response;
+    console.log(response.data);
+    return response.data;
   } catch (error) {
     console.error('Помилка при отриманні фільмів:', error);
     return null;
@@ -57,8 +58,7 @@ export const fetchMovieReviews = async id => {
     const response = await axios.get(
       `https://api.themoviedb.org/3/movie/${id}/reviews?api_key=${API_KEY}`
     );
-    console.log(response);
-    return response;
+    return response.data;
   } catch (error) {
     console.error('Помилка при отриманні фільмів:', error);
     return null;

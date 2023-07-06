@@ -11,7 +11,7 @@ const MovieDetails = () => {
     const fetchMovie = async () => {
       try {
         const response = await fetchMovieDetails(id);
-        console.log(response.data);
+
         setMovie(response.data);
       } catch (error) {
         console.log('Error fetching movie details:', error);
@@ -37,7 +37,7 @@ const MovieDetails = () => {
       ))}
       <p>{movie.overview}</p>
       <Link to={`/movieDetails/${id}/cast`}>Cast</Link>
-      <Link to={`/movieDetails/${id}/rewiews`}>Reviews</Link>
+      <Link to={`/movieDetails/${id}/reviews`}>Reviews</Link>
 
       <Outlet />
     </div>

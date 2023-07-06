@@ -1,40 +1,43 @@
 import React, { useEffect, useState } from 'react';
+import { fetchMovieReviews } from '../Api.js';
 import { useParams } from 'react-router-dom';
-import { fetchMovieReviews } from '../Api';
 
 const Reviews = () => {
-  const [reviews, setReviews] = useState(null);
+  const [reviews, setReviews] = useState([]);
+
   const { id } = useParams();
 
   useEffect(() => {
     const fetchReviews = async () => {
       try {
         const response = await fetchMovieReviews(id);
-        setReviews(response);
+
+        setReviews(response.data.results);
       } catch (error) {
-        console.error('Error fetching reviews:', error);
+        console.log('Error fetching movie reviews:', error);
       }
     };
 
     fetchReviews();
   }, [id]);
 
-  if (!reviews) {
-    return <div>Loading reviews...</div>;
-  }
-
   return (
     <div>
-      <h3>Cast</h3>
-      {reviews.map(({ id: revId, popularity }) => {
-        return (
-          <div key={revId}>
-            {/* Render cast information */}
-            <p>{popularity}</p>
-          </div>
-        );
-      })}
+      <h3>Reviews:</h3>
+      {Array.isArray(reviews) && reviews.length > 0 ? (
+        <ul>
+          {reviews.map(review => (
+            <li key={review.id}>
+              <h4>{review.author}</h4>
+              <p>{review.content}</p>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p>No reviews available</p>
+      )}
     </div>
   );
 };
+
 export default Reviews;
