@@ -9,7 +9,6 @@ const Home = () => {
     const fetchMovieTrend = async () => {
       try {
         const response = await fetchTrend();
-        console.log(response.results);
         setMovies(response.results);
       } catch (error) {
         console.log('Error fetching movie details:', error);

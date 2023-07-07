@@ -7,7 +7,7 @@ export const fetchTrend = async () => {
     const response = await axios.get(
       ` https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}`
     );
-    console.log(response.data);
+
     return response.data;
   } catch (error) {
     console.error('Помилка при отриманні фільмів:', error);
