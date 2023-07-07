@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchMovieCredits } from '../Api';
+import styles from '../cast/Cast.module.css';
 const Cast = () => {
   const [cast, setCast] = useState(null);
   const { id } = useParams();
@@ -23,19 +24,19 @@ const Cast = () => {
   }
 
   return (
-    <div>
-      <h3>Cast</h3>
+    <div className={styles.castBoxWrap}>
       {cast.cast.map(({ profile_path, id: castId, original_name }) => {
         if (!profile_path) {
           return null;
         }
         return (
-          <div key={castId}>
+          <div className={styles.imgBox} key={castId}>
             <img
+              className={styles.img}
               src={`https://image.tmdb.org/t/p/w300${profile_path}`}
               alt={original_name}
             />
-            <p>{original_name}</p>
+            <p className={styles.imgName}>{original_name}</p>
           </div>
         );
       })}

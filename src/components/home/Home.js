@@ -22,7 +22,7 @@ const Home = () => {
   return (
     <ul className={styles.listFilmTop}>
       {movies.map(movie => (
-        <li>
+        <li key={movie.id}>
           <Link className={styles.item} to={`/movieDetails/${movie.id}`}>
             {movie.original_title}
           </Link>

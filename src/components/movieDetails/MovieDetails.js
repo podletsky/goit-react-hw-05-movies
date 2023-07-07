@@ -42,9 +42,14 @@ const MovieDetails = () => {
         ))}
       </div>
       <p className={styles.textOverviev}>{movie.overview}</p>
-      <Link to={`/movieDetails/${id}/cast`}>Cast</Link>
-      <Link to={`/movieDetails/${id}/reviews`}>Reviews</Link>
-
+      <div className={styles.castBox}>
+        <Link className={styles.linkDetail} to={`/movieDetails/${id}/cast`}>
+          Cast
+        </Link>
+        <Link className={styles.linkDetail} to={`/movieDetails/${id}/reviews`}>
+          Reviews
+        </Link>
+      </div>
       <Outlet />
     </div>
   );
