@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { fetchMovies } from '../../services/Api';
 import { Link, useSearchParams } from 'react-router-dom';
 import styles from '../movies/Movies.module.css';
@@ -8,15 +8,7 @@ const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [movies, setMovies] = useState([]);
 
-  useEffect(() => {
-    if (!searchParams.has('name')) {
-      return;
-    }
-
-    searchMovies();
-  }, [searchParams]);
-
-  const searchMovies = async () => {
+  const searchMovies = useCallback(async () => {
     try {
       const response = await fetchMovies(searchParams.get('name'));
 
@@ -29,7 +21,15 @@ const Movies = () => {
       console.log('Error fetching movies:', error);
       setMovies([]);
     }
-  };
+  }, [searchParams]);
+
+  useEffect(() => {
+    if (!searchParams.has('name')) {
+      return;
+    }
+
+    searchMovies();
+  }, [searchParams, searchMovies]);
 
   const handleInputChange = e => {
     setInputValue(e.target.value);
