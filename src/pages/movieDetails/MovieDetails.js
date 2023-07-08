@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { fetchMovieDetails } from '../Api.js';
+import { fetchMovieDetails } from '/1/goit-react-hw-05-movies/src/service/Api';
 import { useParams, Link, Outlet } from 'react-router-dom';
-import styles from '../movieDetails/MovieDetails.module.css';
+import styles from './MovieDetails.module.css';
 
 const MovieDetails = () => {
   const [movie, setMovie] = useState(null);

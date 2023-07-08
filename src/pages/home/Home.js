@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { fetchTrend } from 'components/Api';
+import { fetchTrend } from '/1/goit-react-hw-05-movies/src/service/Api';
 import { Link } from 'react-router-dom';
 import styles from '../home/home.module.css';
 const Home = () => {
