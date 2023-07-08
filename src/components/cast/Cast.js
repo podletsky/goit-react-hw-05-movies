@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { fetchMovieCredits } from '/1/goit-react-hw-05-movies/src/service/Api';
+import { fetchMovieCredits } from '../../services/Api';
 import styles from '../cast/Cast.module.css';
 const Cast = () => {
   const [cast, setCast] = useState(null);

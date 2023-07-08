@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { fetchMovieReviews } from '/1/goit-react-hw-05-movies/src/service/Api';
+import { fetchMovieReviews } from '../../services/Api';
 import { useParams } from 'react-router-dom';
 
 const Reviews = () => {

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { fetchMovieDetails } from '/1/goit-react-hw-05-movies/src/service/Api';
+import { fetchMovieDetails } from '../../services/Api';
 import { useParams, Link, Outlet } from 'react-router-dom';
 import styles from './MovieDetails.module.css';
 

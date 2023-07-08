@@ -1,23 +1,34 @@
 import React, { useEffect, useState } from 'react';
-import { fetchMovies } from '/1/goit-react-hw-05-movies/src/service/Api';
-import { Link } from 'react-router-dom';
+import { fetchMovies } from '../../services/Api';
+import { Link, useSearchParams } from 'react-router-dom';
 import styles from '../movies/Movies.module.css';
+
 const Movies = () => {
   const [inputValue, setInputValue] = useState('');
+  const [searchParams, setSearchParams] = useSearchParams();
   const [movies, setMovies] = useState([]);
+
   useEffect(() => {
+    if (!searchParams.has('name')) {
+      return;
+    }
+
     searchMovies();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [movies]);
+  }, [searchParams]);
+
   const searchMovies = async () => {
     try {
-      const response = await fetchMovies(inputValue);
+      const response = await fetchMovies(searchParams.get('name'));
 
-      if (Array.isArray(response.data.results)) {
+      if (Array.isArray(response?.data?.results)) {
         setMovies(response.data.results);
       } else {
+        setMovies([]);
       }
-    } catch (error) {}
+    } catch (error) {
+      console.log('Error fetching movies:', error);
+      setMovies([]);
+    }
   };
 
   const handleInputChange = e => {
@@ -26,7 +37,7 @@ const Movies = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    searchMovies();
+    setSearchParams({ name: inputValue });
   };
 
   return (
@@ -41,15 +52,24 @@ const Movies = () => {
           value={inputValue}
           onChange={handleInputChange}
         />
+        <button type="submit">Search</button>
       </form>
 
-      <ul>
-        {movies.map(movie => (
-          <li key={movie.id}>
-            <Link to={`/movieDetails/${movie.id}`}>{movie.title}</Link>
-          </li>
-        ))}
-      </ul>
+      <Link to={'/component/Home'}>
+        <button>go back</button>
+      </Link>
+
+      {movies.length > 0 ? (
+        <ul>
+          {movies.map(movie => (
+            <li key={movie.id}>
+              <Link to={`/movieDetails/${movie.id}`}>{movie.title}</Link>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p>No movies found</p>
+      )}
     </>
   );
 };
