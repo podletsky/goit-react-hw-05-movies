@@ -36,7 +36,7 @@ const Movies = () => {
     }
 
     searchMovies();
-  }, [searchParams, searchMovies]);
+  }, [searchParams, searchMovies, location]);
 
   const handleInputChange = e => {
     setInputValue(e.target.value);
