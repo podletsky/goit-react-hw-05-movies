@@ -1,42 +1,34 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState } from 'react';
 import { fetchMovies } from '../../services/Api';
-import {
-  Link,
-  useSearchParams,
-  useLocation,
-  useNavigate,
-} from 'react-router-dom';
-import styles from '../movies/Movies.module.css';
+import { Link, useSearchParams, useLocation } from 'react-router-dom';
+import styles from './Movies.module.css';
 
 const Movies = () => {
   const [inputValue, setInputValue] = useState('');
   const [searchParams, setSearchParams] = useSearchParams();
   const [movies, setMovies] = useState([]);
   const location = useLocation();
-  const navigate = useNavigate();
-
-  const searchMovies = useCallback(async () => {
-    try {
-      const response = await fetchMovies(searchParams.get('name'));
-
-      if (Array.isArray(response?.data?.results)) {
-        setMovies(response.data.results);
-      } else {
-        setMovies([]);
-      }
-    } catch (error) {
-      console.log('Error fetching movies:', error);
-      setMovies([]);
-    }
-  }, [searchParams]);
 
   useEffect(() => {
-    if (!searchParams.has('name')) {
-      return;
-    }
+    const searchMovies = async () => {
+      try {
+        const response = await fetchMovies(searchParams.get('name'));
 
-    searchMovies();
-  }, [searchParams, searchMovies, location]);
+        if (Array.isArray(response?.data?.results)) {
+          setMovies(response.data.results);
+        } else {
+          setMovies([]);
+        }
+      } catch (error) {
+        console.log('Error fetching movies:', error);
+        setMovies([]);
+      }
+    };
+
+    if (searchParams.has('name')) {
+      searchMovies();
+    }
+  }, [searchParams]);
 
   const handleInputChange = e => {
     setInputValue(e.target.value);
@@ -45,10 +37,6 @@ const Movies = () => {
   const handleSubmit = e => {
     e.preventDefault();
     setSearchParams({ name: inputValue });
-  };
-
-  const handleClick = () => {
-    navigate('/component/Home');
   };
 
   return (
@@ -68,20 +56,16 @@ const Movies = () => {
             Search
           </button>
         </form>
-
-        <button
-          className={styles.buttonBack}
-          type="button"
-          onClick={handleClick}
-        >
-          Go back
-        </button>
       </div>
       {movies.length > 0 ? (
         <ul className={styles.listMovies}>
           {movies.map(movie => (
             <li key={movie.id}>
-              <Link to={`/movieDetails/${movie.id}`} className={styles.link}>
+              <Link
+                to={`/movieDetails/${movie.id}`}
+                state={{ from: location }}
+                className={styles.link}
+              >
                 {movie.title}
               </Link>
             </li>

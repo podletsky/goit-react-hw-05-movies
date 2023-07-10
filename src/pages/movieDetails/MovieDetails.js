@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { fetchMovieDetails } from '../../services/Api';
-import { useParams, Link, Outlet } from 'react-router-dom';
+import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
 import styles from './MovieDetails.module.css';
 
 const MovieDetails = () => {
   const [movie, setMovie] = useState(null);
-
+  const location = useLocation;
   const { id } = useParams();
-
+  const goBack = useRef(location.state?.from ?? '/');
   useEffect(() => {
     const fetchMovie = async () => {
       try {
@@ -28,6 +28,9 @@ const MovieDetails = () => {
 
   return (
     <div>
+      <Link className={styles.goBack} to={goBack.current}>
+        go back
+      </Link>
       <h2 className={styles.titleFilm}>{movie.title}</h2>
       <img
         className={styles.img}
