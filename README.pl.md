@@ -14,7 +14,7 @@ repozytorium własnego projektu. W tym celu kliknij na przycisk
 `"Use this template"` i wybierz opcję `"Create a new repository"`, jak pokazano
 na rysunku.
 
-![Creating repo from a template step 1](./assets/template-step-1.png)
+![Creating repo from a templat step 1](./assets/template-step-1.png)
 
 W następnym kroku otworzy się strona utworzenia nowego repozytorium. Wypełnij
 pole nazwy i upewnij się, że repozytorium jest publiczne, a następnie kliknij na
@@ -22,11 +22,14 @@ przycisk `"Create repository from template"`.
 
 ![Creating repo from a template step 2](./assets/template-step-2.png)
 
-Po utworzeniu repozytorium, należy przejść do jego ustawień w zakładce `Settings` > `Actions` > `General`, jak pokazano na rysunku.
+Po utworzeniu repozytorium, należy przejść do jego ustawień w zakładce
+`Settings` > `Actions` > `General`, jak pokazano na rysunku.
 
 ![Settings GitHub Actions permissions step 1](./assets/gh-actions-perm-1.png)
 
-Przescrolluj stronę do samego końca, w sekcji `«Workflow permissions»` wybierz opcję `«Read and write permissions»` i zaznacz pole w checkboksie. Jest to niezbędne do automatyzacji procesu deploymentu projektu.
+Przescrolluj stronę do samego końca, w sekcji `«Workflow permissions»` wybierz
+opcję `«Read and write permissions»` i zaznacz pole w checkboksie. Jest to
+niezbędne do automatyzacji procesu deploymentu projektu.
 
 ![Settings GitHub Actions permissions step 2](./assets/gh-actions-perm-2.png)
 
