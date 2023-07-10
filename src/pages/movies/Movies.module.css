@@ -1,5 +1,5 @@
 .input {
-  width: 300px;
+  width: 650px;
   height: 30px;
   font-size: 18px;
   font-family: 'Times New Roman', Times, serif;
@@ -8,7 +8,28 @@
   border-radius: 10px;
   margin: 20px;
 }
-.form {
-  display: flex;
-  justify-content: center;
+
+.buttonBack {
+  border-radius: 10px;
+  height: 30px;
+  border: none;
+  background-color: darkgreen;
+  margin-top: 10px;
+  width: 80px;
 }
+.buttonSearch {
+  border-radius: 10px;
+  height: 30px;
+  border: none;
+  background-color: darkgreen;
+
+  width: 80px;
+}
+/* .boxForm {
+  display: flex;
+  flex-direction: column;
+}
+.listMovies {
+  list-style: none;
+  text-decoration-color: black;
+}  */

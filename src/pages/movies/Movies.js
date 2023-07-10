@@ -1,12 +1,19 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { fetchMovies } from '../../services/Api';
-import { Link, useSearchParams } from 'react-router-dom';
+import {
+  Link,
+  useSearchParams,
+  useLocation,
+  useNavigate,
+} from 'react-router-dom';
 import styles from '../movies/Movies.module.css';
 
 const Movies = () => {
   const [inputValue, setInputValue] = useState('');
   const [searchParams, setSearchParams] = useSearchParams();
   const [movies, setMovies] = useState([]);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const searchMovies = useCallback(async () => {
     try {
@@ -21,7 +28,7 @@ const Movies = () => {
       console.log('Error fetching movies:', error);
       setMovies([]);
     }
-  }, [searchParams]);
+  }, [searchParams, location]);
 
   useEffect(() => {
     if (!searchParams.has('name')) {
@@ -40,27 +47,38 @@ const Movies = () => {
     setSearchParams({ name: inputValue });
   };
 
+  const handleClick = () => {
+    navigate('/component/Home');
+  };
+
   return (
     <>
-      <form className={styles.form} onSubmit={handleSubmit}>
-        <input
-          className={styles.input}
-          type="text"
-          autoComplete="off"
-          autoFocus
-          placeholder=""
-          value={inputValue}
-          onChange={handleInputChange}
-        />
-        <button type="submit">Search</button>
-      </form>
+      <div className={styles.boxForm}>
+        <form className={styles.form} onSubmit={handleSubmit}>
+          <input
+            className={styles.input}
+            type="text"
+            autoComplete="off"
+            autoFocus
+            placeholder=""
+            value={inputValue}
+            onChange={handleInputChange}
+          />
+          <button className={styles.buttonSearch} type="submit">
+            Search
+          </button>
+        </form>
 
-      <Link to={'/component/Home'}>
-        <button>go back</button>
-      </Link>
-
+        <button
+          className={styles.buttonBack}
+          type="button"
+          onClick={handleClick}
+        >
+          Go back
+        </button>
+      </div>
       {movies.length > 0 ? (
-        <ul>
+        <ul className={styles.listMovies}>
           {movies.map(movie => (
             <li key={movie.id}>
               <Link to={`/movieDetails/${movie.id}`}>{movie.title}</Link>
