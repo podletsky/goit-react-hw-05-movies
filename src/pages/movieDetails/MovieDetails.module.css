@@ -7,10 +7,11 @@
 }
 .boxText {
   border-bottom: 2px slategrey;
-  background-color: aquamarine;
+  color: white;
   display: flex;
   justify-content: space-evenly;
-  background-color: orangered;
+  background-color: darkgreen;
+  font-weight: 800;
 }
 .textOverviev {
   padding: 20px;
@@ -35,7 +36,7 @@
   padding-right: 20px;
   border: 1px solid transparent;
   border-radius: 10px;
-  background: orangered;
+  background: darkgreen;
   color: aliceblue;
   margin: 10px;
   margin-bottom: 40px;
@@ -46,7 +47,7 @@
   justify-content: center;
 }
 .linkDetail:hover {
-  color: orangered;
+  color: darkgreen;
   background-color: white;
-  border: solid 2px orangered;
+  border: solid 2px darkgreen;
 }

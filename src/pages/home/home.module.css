@@ -15,13 +15,15 @@
 }
 .listFilmTop {
   list-style: none;
+  padding: 0;
 }
 
 .item {
   text-decoration: none;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-size: 18px;
-  color: gray;
+  color: black;
+  font-weight: 600;
 }
 Link {
   text-decoration: none;

@@ -7,7 +7,7 @@
   padding-right: 20px;
   border: 1px solid transparent;
   border-radius: 10px;
-  background: orangered;
+  background-color: darkgreen;
   color: aliceblue;
   margin: 10px;
 }
@@ -16,12 +16,13 @@
   padding: 30px;
   display: flex;
   justify-content: center;
-  border-bottom: solid brown;
+  border-bottom: solid darkgreen;
 }
 .navlink:hover {
-  color: orangered;
-  background-color: white;
-  border: solid 2px orangered;
+  background-color: darkgreen;
+  background-color: beige;
+  border: solid 2px darkgreen;
+  color: black;
 }
 .navlink {
   text-transform: uppercase;

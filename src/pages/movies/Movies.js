@@ -28,7 +28,7 @@ const Movies = () => {
       console.log('Error fetching movies:', error);
       setMovies([]);
     }
-  }, [searchParams, location]);
+  }, [searchParams]);
 
   useEffect(() => {
     if (!searchParams.has('name')) {
@@ -81,12 +81,14 @@ const Movies = () => {
         <ul className={styles.listMovies}>
           {movies.map(movie => (
             <li key={movie.id}>
-              <Link to={`/movieDetails/${movie.id}`}>{movie.title}</Link>
+              <Link to={`/movieDetails/${movie.id}`} className={styles.link}>
+                {movie.title}
+              </Link>
             </li>
           ))}
         </ul>
       ) : (
-        <p>No movies found</p>
+        <h3>No movies found</h3>
       )}
     </>
   );
