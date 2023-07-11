@@ -5,7 +5,7 @@ import styles from './MovieDetails.module.css';
 
 const MovieDetails = () => {
   const [movie, setMovie] = useState(null);
-  const location = useLocation;
+  const location = useLocation();
   const { id } = useParams();
   const goBack = useRef(location.state?.from ?? '/');
   useEffect(() => {
